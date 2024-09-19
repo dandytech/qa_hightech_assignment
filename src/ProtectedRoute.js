@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { getToken } from "./utils/getToken";
+import { useEffect } from "react";
 
 export default function ProtectedRoute({ children }) {
-  const navigate = useNavigate();
+  const navigate = useNavigate;
 
   // Fetch token from local storage or wherever it's stored
   const token = getToken();
@@ -12,7 +12,7 @@ export default function ProtectedRoute({ children }) {
     if (!token) {
       navigate("/");
     }
-  }, []);
+  }, [token, navigate]);
   if (!token) {
     return;
   }

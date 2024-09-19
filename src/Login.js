@@ -19,7 +19,7 @@ export default function Login() {
       setMessage("Login successful");
       navigate("/user");
     } catch (error) {
-      setMessage("Login failed");
+      setMessage("Login failed: check your credentials and try again");
     }
   };
   return (

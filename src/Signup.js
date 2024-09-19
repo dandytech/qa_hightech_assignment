@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./index.css";
 import { useState } from "react";
 import { signup } from "./api";
@@ -7,6 +7,7 @@ export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ export default function Signup() {
     try {
       const response = await signup({ username, password });
       setMessage("Signup successful, you can now Login");
+      navigate("/login");
       console.log(response);
     } catch (error) {
       setMessage("Signup failed");
