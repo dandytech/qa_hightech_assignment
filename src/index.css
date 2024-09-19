@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.title {
+  font-weight: bolder;
+  font-size: 30px;
+}
+.welcome {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.signup-form {
+  background-color: white;
+  border: 2px solid whitesmoke;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 1px snow;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.div {
+  margin-top: 10px;
+}
+.signup-form input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+.signup-form textarea {
+  width: 60%;
+  padding: 10px;
+  border-radius: 10px;
+}
+.signup-form button {
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+@media (max-width: 768px) {
+  .signup-form {
+    width: 90%;
+  }
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.dashboard {
+  padding: 20px;
+  /* box-shadow: 1px snow;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); */
+  width: 60%;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  .dashboard {
+    width: 90%;
+  }
+}
+
+.container {
+  display: flex;
+  justify-items: self-start;
+  align-items: center;
+  font-weight: bold;
+}
+.container2 {
+  display: flex;
+  justify-items: self-start;
+  align-items: center;
+}
+
+.sn {
+  width: 5%;
+}
+.name {
+  width: 30%;
+}
+.desc {
+  width: 50%;
+}
+.action {
+  width: 15%;
+  position: flex;
+}
+
+.action button {
+  margin-left: 5px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+.additembutton {
+  width: 15%;
+  background-color: green;
+  font-weight: bold;
+  border: none;
+  padding: 5px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+
+.hide {
+  display: none;
+  background-color: red;
+}
+
+.show {
+  display: block;
+}
