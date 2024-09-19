@@ -4,7 +4,6 @@ import AddItem from "./AddItem";
 import UpdateItem from "./UpdateItem";
 import DeleteItem from "./DeleteItem";
 import { getItems } from "./api";
-import { NavLink } from "react-router-dom";
 
 export default function Dashboard() {
   const [addItem, setAddItem] = useState(false);

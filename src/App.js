@@ -49,7 +49,7 @@ function App() {
               <Route path="additem" element={<AddItem />} />{" "}
               <Route
                 path="updateitem"
-                element={<UpdateItem itemId={itemId} />}
+                element={<UpdateItem itemId={itemId} setItemId={setItemId} />}
               />
               <Route
                 path="deleteitem"

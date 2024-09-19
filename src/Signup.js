@@ -15,6 +15,7 @@ export default function Signup() {
     try {
       const response = await signup({ username, password });
       setMessage("Signup successful, you can now Login");
+      console.log(response);
     } catch (error) {
       setMessage("Signup failed");
     }
