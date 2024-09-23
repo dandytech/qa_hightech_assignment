@@ -6,17 +6,21 @@ const AddItem = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleAddItem = async (e) => {
     if (!name || !description) return;
-
     e.preventDefault();
+
+    setLoading(true);
     try {
       await addItem({ name, description });
       setMessage("Item added successfully");
       window.location.reload();
     } catch (error) {
       setMessage("Failed to add item");
+    } finally {
+      setLoading(false); // Stop loader
     }
   };
 
@@ -40,7 +44,8 @@ const AddItem = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
       </p>
-      <button type="submit">Add Item</button>
+      <button type="submit"> {loading ? "Logging in..." : "Add Item"}</button>
+      {loading && <p>Loading...</p>}
       <p>{message}</p>
     </form>
   );

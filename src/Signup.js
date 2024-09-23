@@ -7,12 +7,14 @@ export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
     if (!username || !password) return;
-
+    setLoading(true);
     try {
       const response = await signup({ username, password });
       setMessage("Signup successful, you can now Login");
@@ -20,6 +22,8 @@ export default function Signup() {
       console.log(response);
     } catch (error) {
       setMessage("Signup failed");
+    } finally {
+      setLoading(false); // Stop loader
     }
   };
 
@@ -54,9 +58,10 @@ export default function Signup() {
       </p>
 
       <p>
-        <button type="submit">Submit</button>
+        <button type="submit"> {loading ? "Logging in..." : "Submit"}</button>
       </p>
       <p>
+        {loading && <p>Loading...</p>}
         <p>{message}</p>
       </p>
 

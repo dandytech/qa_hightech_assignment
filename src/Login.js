@@ -7,11 +7,13 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await login({ username, password });
       console.log(response);
@@ -20,6 +22,8 @@ export default function Login() {
       navigate("/user");
     } catch (error) {
       setMessage("Login failed: check your credentials and try again");
+    } finally {
+      setLoading(false); // Stop loader
     }
   };
   return (
@@ -51,8 +55,9 @@ export default function Login() {
       </p>
 
       <p>
-        <button type="submit">Login</button>
+        <button type="submit"> {loading ? "Logging in..." : "Login"}</button>
       </p>
+      {loading && <p>Loading...</p>}
       <p>{message}</p>
 
       <p>

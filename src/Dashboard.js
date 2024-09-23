@@ -9,16 +9,21 @@ export default function Dashboard() {
   const [addItem, setAddItem] = useState(false);
   const [editItem, setEditItem] = useState(false);
   const [deleteI, setDeleteItem] = useState(false);
+
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const handleOpenAdd = () => {
     setAddItem(!addItem);
   };
 
-  const handleOpenEdit = () => {
+  const handleOpenEdit = (item) => {
     setEditItem(!editItem);
+    setSelectedItem((cur) => (cur?.id === item.id ? null : item));
   };
 
-  const handleDeleteItem = () => {
+  const handleDeleteItem = (item) => {
     setDeleteItem(!deleteI);
+    setSelectedItem((cur) => (cur?.id === item.id ? null : item));
   };
 
   const [items, setItems] = useState([]);
@@ -61,7 +66,9 @@ export default function Dashboard() {
 
   return (
     <div>
-      <button onClick={logout}>🏠Home</button>
+      <button onClick={logout} className="link">
+        🏠Home
+      </button>
       <p className="title">LIST OF ITEMS</p>
 
       <p>
@@ -71,10 +78,10 @@ export default function Dashboard() {
         <AddItem />
       </p>
       <p className={`hide ${editItem ? "show" : ""} `}>
-        <UpdateItem />
+        <UpdateItem selectedItem={selectedItem} />
       </p>
       <p className={`hide ${deleteI ? "show" : ""} `}>
-        <DeleteItem />
+        <DeleteItem selectedItem={selectedItem} />
       </p>
       <div>
         <p className="container">
@@ -96,13 +103,13 @@ export default function Dashboard() {
             <span className="action">
               {" "}
               <button
-                onClick={handleOpenEdit}
+                onClick={() => handleOpenEdit(item)} // Pass item as argument
                 className={` ${addItem || deleteI ? "hide" : ""} `}
               >
-                {!editItem ? "   Edit" : "Close"}
+                {!editItem ? "Edit" : "Close"}
               </button>
               <button
-                onClick={handleDeleteItem}
+                onClick={() => handleDeleteItem(item)}
                 className={` ${addItem || editItem ? "hide" : ""} `}
               >
                 {!deleteI ? "   Delete" : "Close"}
